@@ -37,7 +37,8 @@ Run `ng serve`|`ng serve --port 5000` for a dev server. Navigate to `http://loca
 
 ## Application serves the data through model file which would be served via API to application.
 
-## troubleshoot - If application is not running and throwing error. It may happend that node modules which are readily available in repository is not compatible
+## Troubleshoot  
+If application is not running and throwing error. It may happend that node modules which are readily available in repository is not compatible
 
 - install nodejs 10.0.0 - nvm install 10.0.0 (considering nvm is already installed)
 
