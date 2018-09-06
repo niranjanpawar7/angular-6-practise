@@ -1,0 +1,36 @@
+# Docplexus App
+
+This App is implemented in [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+
+## Development server
+
+Run `ng serve`|`ng serve --port 5000` for a dev server. Navigate to `http://localhost:4200/`|`http://localhost:5000/`. The app will automatically reload if you change any of the source files.
+
+## Directory Structure
+	
+ - angular.json : Holds project configuration
+ - child.component.ts 
+ - e2e 
+ - how-to-use.txt
+ - node_modules
+ - package.json
+ - package-lock.json
+ - README.md
+ - README.md~
+ - src - Contains Project's source code. Adding only app directory
+ 	- app - This contains main implementation
+	 	- app.component.css
+	 	- app.component.html
+	 	- app.component.ts
+	 	- app.module.ts
+	 	- app-routing.module.ts
+	 	- mock-quotes.ts
+	 	- quote.model.ts
+	 	- quotes
+	 	- quotes-details
+	 	- quotes.service.ts
+ - tsconfig.json
+ - tslint.json
+
+
+## Application serves the data through model file which would be served via API to application.
