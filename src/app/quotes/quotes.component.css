@@ -1,0 +1,146 @@
+body{
+  padding: 15px;
+} 
+.panel{
+     border-radius: 7px 0px 7px 0px; 
+     box-shadow: 0 2px 2px rgba(0,0,0,.08);
+}    
+.panel-body p:first-child{
+    font-size: 20px;
+    text-transform: capitalize;
+}    
+.panel-body .well {
+    padding: 7px 15px;
+    margin: 0px;
+    border-radius: 0px;
+    border-left:0px;
+    border-right:0px; 
+    margin-bottom:10px;
+    text-transform: capitalize; 
+}
+.row {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em;
+
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%;
+ cursor: initial;
+}
+
+.well {
+ position:relative;
+ display: block; 
+}
+
+hr{
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.panel-primary {
+    border-color: #cecece;
+}
+.form-control { 
+    padding: 2px 12px; 
+}
+.dropdown{
+    margin-left: -13px;
+    margin-bottom: 15px;
+}
+.dropdown-menu{
+    width: 200px;
+     height: 300px;
+    overflow-y: auto;
+}
+.dropdown-menu li{
+    padding: 10px;
+    cursor: pointer;
+} 
+.dropdown-menu li:hover{
+    background:green;
+    color: white;
+}
+.count-section span{
+    margin-left:6px; 
+    cursor: initial;
+}
+.count-section .col-md-4{
+    padding-left: 7px;
+    padding-right: 7px; 
+}
+.count-section .col-md-4:first-child{
+    padding-left: 0px; 
+}
+.col-md-12 .btn-custom{
+    padding: 6px;
+    width: 140px;
+    background: transparent;
+    border: 1px solid #cecece;
+    color: black;
+    margin-top: 10px;
+}
+.col-md-12 .btn-custom:hover{
+    background:#f5f5f5;
+    color:black;
+    border: 1px solid #ddd; 
+}
+
+.filterdata{
+    margin-left:-15px;
+    margin-right: -15px;  
+    float: left;
+    width:100%;
+}
+.filterdata  .col-md-3{
+    padding-left: 0px;
+}
+.panel-body h5{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+.well.well-sm{
+    float: left;
+    width: 100%;
+}
+.well.well-sm p{
+    margin-top: 7px;
+    margin-bottom:  7px;
+}
+@media only screen and (max-width: 768px) {
+   .item{ 
+        padding: 0px 10px;
+    }
+    count-section{
+        float: left;
+        width: 100%;
+    }
+    .count-section .col-md-4{
+        padding-left: 3px;
+        padding-right: 3px; 
+    }
+    .filterdata{
+        margin-left:-5px;
+        margin-right: 0px;  
+        float: left;
+        width:100%;
+    }
+    .filterdata  .col-md-3{
+        padding-left: 0px;
+    }
+    .well{
+        float: left;
+        width: 100%;
+    }
+    .well.well-sm {
+        padding: 15px 0px;
+    }
+}
