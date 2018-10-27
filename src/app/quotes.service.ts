@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Quote } from './quote.model';
-import { QUOTES } from  './mock-quotes'
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +9,10 @@ import { QUOTES } from  './mock-quotes'
 
 export class QuoteServiceClass {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getQuotes(): Observable<Quote[]> { 
-	  return of(QUOTES);
+  getQuotes(): Observable<any> { 
+		     return this.http.get('http://localhost:4200/assets/quotes.json');
 	};
-
-	getQuote(id: string): Observable<Quote> { 
-	  return of(QUOTES.find(quote => quote.id === id));
-	}
-
-	getAuthorData(id){ 
-			return of(QUOTES.filter(quote => quote.author['id'] == id)); 
-	}
 
 }
