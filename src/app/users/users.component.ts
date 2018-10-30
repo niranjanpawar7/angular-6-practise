@@ -3,7 +3,8 @@ import { QuoteServiceClass } from '../quotes.service';
 import {ISubscription} from "rxjs/Subscription";
 import {MatPaginator, MatTableDataSource} from '@angular/material'; 
 import {MatSort} from '@angular/material';
- 
+import { FormGroup,  FormControl, FormBuilder, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -11,9 +12,9 @@ import {MatSort} from '@angular/material';
 })
 export class UsersComponent implements OnInit {
   
+  date = new Date();
   subscription: ISubscription;
-  dataSource;
-    
+  dataSource; 
 
   columnsToDisplay = ['Name', 'profession', 'born', 'died','topics', 'shareCount'];
 
@@ -21,14 +22,12 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private quoteService: QuoteServiceClass) { }
-
-  
-   
+ 
 
   ngOnInit() {
      
     this.getUserData();
-    
+    this
   }
 
   getUserData() {
@@ -45,6 +44,12 @@ export class UsersComponent implements OnInit {
             console.log(error);
         }
     );
+  }
+
+  applyFilter(filterValue: string) {
+    debugger;
+    console.log(this.dataSource);
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnDestroy() {
