@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { RegistrationService } from '../shared/services/registration.service';
+import {Router} from "@angular/router"
+ 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -11,15 +13,15 @@ export class RegistrationComponent implements OnInit {
   myForm: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private registrationService : RegistrationService, private route: Router) { }
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      firstName : ['', Validators.required],
-      lastName : ['', Validators.required],
+      username : ['', Validators.required],
+      contact : ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confPassword: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(3)]],
+      confpassword: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -34,9 +36,19 @@ export class RegistrationComponent implements OnInit {
             return;
           } else {
           const formData = this.myForm.value ;
-          if (formData.password === formData.confPassword) {
-            console.log('Right', this.myForm.value);
+          if (formData.password === formData.confpassword) { 
             this.submitted = true;
+            this.registrationService.saveUserData(formData)
+            .subscribe(
+              (response) => {
+                console.log('response', response);
+                this.route.navigate(['login']);
+              },
+              (error) => {
+                console.log('error', error);
+              },
+            )
+          
           } else {
             console.log('Wrong password');
             this.submitted = false;
