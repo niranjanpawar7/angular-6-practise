@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { QuoteServiceClass } from '../quotes.service';
+import { QuoteServiceClass } from '../shared/services/quotes.service';
 import {ISubscription} from "rxjs/Subscription";
  
 

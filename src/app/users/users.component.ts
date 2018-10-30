@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { QuoteServiceClass } from '../quotes.service';
+import { QuoteServiceClass } from '../shared/services/quotes.service';
 import {ISubscription} from "rxjs/Subscription";
 import {MatPaginator, MatTableDataSource} from '@angular/material'; 
 import {MatSort} from '@angular/material';
