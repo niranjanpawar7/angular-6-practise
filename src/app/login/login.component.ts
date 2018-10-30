@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
         this.loginService.login(this.myLoginFrom.value)
         .subscribe(
           (response) =>{ 
-            
             if(response && response.token && response.data[0] && response.data[0].username && response.data[0].password){
               console.log(response);
               const userToken = response.token;
@@ -51,6 +50,5 @@ export class LoginComponent implements OnInit {
         )
         
     }
-  
-
+  }
 }
