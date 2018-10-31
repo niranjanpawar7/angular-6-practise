@@ -25,7 +25,6 @@ import {MatTabsModule} from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { UsersComponent } from './users/users.component';
 import { HeaderComponent } from './header/header.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AuthGuard } from './auth.guard';
@@ -41,7 +40,6 @@ const appRoute: Routes  = [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    UsersComponent,
     HeaderComponent,
     UserDetailsComponent,
   ],
