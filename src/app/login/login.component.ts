@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../shared/services/login.service';
 import {Router} from "@angular/router"
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   myLoginFrom: FormGroup;
   submitted = false; 
 
-  constructor(private fb: FormBuilder, private loginService:LoginService, private route: Router) { }
+  constructor(private fb: FormBuilder, private loginService:LoginService, private route: Router, private authService: AuthService) { }
 
   ngOnInit() { 
 
@@ -29,19 +30,20 @@ export class LoginComponent implements OnInit {
   login(){
     this.submitted = true; 
 
-    if (this.myLoginFrom.invalid) {
-           console.log('Invalid');
+    if (this.myLoginFrom.invalid) 
+    {
           return;
-      } else {
+      } 
+      else 
+      {
         this.loginService.login(this.myLoginFrom.value)
         .subscribe(
           (response) =>{ 
-            if(response && response.token && response.data[0] && response.data[0].username && response.data[0].password){
-              console.log(response);
-              const userToken = response.token;
-              localStorage.setItem('token', userToken);
-              this.route.navigate(['/users'])
-            }
+            if(response && response.token && response.data[0] && response.data[0].username && response.data[0].password){ 
+              const userToken = response.token;  
+              this.authService.sendToken(response['token']);
+              this.route.navigate(['users']); 
+           }
             
           },
           (error) =>{

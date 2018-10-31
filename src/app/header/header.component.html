@@ -3,15 +3,13 @@
       <div class="navbar-header visible-xs">
         <a class="navbar-brand" href="#">WebSiteName</a>
       </div>
-      <ul class="nav navbar-nav">
-        
-          <li class=""><a routerLink="/users">users</a></li> 
-        
-        
+      <ul class="nav navbar-nav"> 
+          <li class=""><a *ngIf="auth.isLoggednIn()" routerLink="/users">users</a></li>   
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="!auth.isLoggednIn()"><a routerLink="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li *ngIf="!auth.isLoggednIn()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="auth.isLoggednIn()" style="cursor:pointer" (click)="logout()"><a><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
       </ul>
     </div>
   </nav>
