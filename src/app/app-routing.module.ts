@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
+import { AuthGuard } from './auth.guard';
+
 // Custom components
 
 
 const routes: Routes = [
-{ path: '', redirectTo: '/registration', pathMatch: 'full' },
-{ path : 'login', component : LoginComponent},
+//{ path: '', redirectTo: '/registration', pathMatch: 'full', canActivate:[AuthGuard] },
+{ path : 'login', component : LoginComponent },
 { path : 'registration', component : RegistrationComponent },
-{ path: 'users', component : UsersComponent },
-{ path: 'users-detail/:id', component : UserDetailsComponent },
+{ path: 'users', component : UsersComponent, canActivate:[AuthGuard] },
+{ path: 'users-detail/:id', component : UserDetailsComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({

@@ -17,7 +17,9 @@ import { MatTableModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
 import { MatSortModule } from '@angular/material';
 import { MatInputModule, MatButtonModule } from '@angular/material';
+
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+
 import {MatExpansionModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
 
@@ -26,6 +28,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './users/users.component';
 import { HeaderComponent } from './header/header.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
 
 
 const appRoute: Routes  = [
@@ -52,7 +56,7 @@ const appRoute: Routes  = [
     BrowserAnimationsModule,MatExpansionModule,MatTabsModule,
     MatTableModule, MatButtonModule, MatInputModule, MatNativeDateModule, MatDatepickerModule,  MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule,MatPaginatorModule, MatSortModule
   ],
-  providers: [],
+  providers: [AuthGuard,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
