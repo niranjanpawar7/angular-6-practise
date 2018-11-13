@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'; 
@@ -29,6 +30,10 @@ import { HeaderComponent } from './header/header.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { MatDialogModule } from "@angular/material";
+
+
 
 
 const appRoute: Routes  = [
@@ -42,6 +47,7 @@ const appRoute: Routes  = [
     RegistrationComponent,
     HeaderComponent,
     UserDetailsComponent,
+    MyDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +58,11 @@ const appRoute: Routes  = [
     RouterModule.forRoot(appRoute), AppRoutingModule,
     Angular2FontawesomeModule,
     BrowserAnimationsModule,MatExpansionModule,MatTabsModule,
-    MatTableModule, MatButtonModule, MatInputModule, MatNativeDateModule, MatDatepickerModule,  MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule,MatPaginatorModule, MatSortModule
+    MatTableModule,MatDialogModule, MatButtonModule, MatInputModule, MatNativeDateModule, MatDatepickerModule,  MatFormFieldModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule,MatPaginatorModule, MatSortModule
   ],
+   entryComponents: [
+    MyDialogComponent
+   ],
   providers: [AuthGuard,AuthService],
   bootstrap: [AppComponent]
 })
