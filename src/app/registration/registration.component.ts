@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrationService } from '../shared/services/registration.service';
 import {Router} from "@angular/router"
- 
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MyDialogComponent } from '../my-dialog/my-dialog.component';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   myForm: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private registrationService : RegistrationService, private route: Router) { }
+  constructor(public dialog: MatDialog, private fb: FormBuilder, private registrationService : RegistrationService, private route: Router) { }
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -55,4 +57,19 @@ export class RegistrationComponent implements OnInit {
           }
         }
   }
+
+  openModal() {
+          const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+          dialogConfig.autoFocus = true;
+          dialogConfig.data = {
+            id: 1,
+            title: 'Angular For Beginners'
+          };
+           const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
+            dialogRef.afterClosed().subscribe(result => {
+          console.log(' Dialog was closed');
+          console.log(result);
+        });
+    }
 }

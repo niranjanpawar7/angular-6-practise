@@ -1,9 +1,10 @@
 <h1>Table</h1>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
 <div class="mat-elevation-z8">
 
-  <mat-form-field style="margin-left:10px; margin-right: 20px">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
+ 
   
   <!-- <mat-form-field>
       <input matInput [matDatepicker]="dp" placeholder="Verbose datepicker" [formControl]="date">
