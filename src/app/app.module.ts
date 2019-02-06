@@ -32,6 +32,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { MatDialogModule } from "@angular/material";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -48,6 +49,7 @@ const appRoute: Routes  = [
     HeaderComponent,
     UserDetailsComponent,
     MyDialogComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
