@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   myLoginFrom: FormGroup;
   submitted = false; 
+  loggMessage ;
 
   constructor(private fb: FormBuilder, private loginService:LoginService, private route: Router, private authService: AuthService) { }
 
@@ -38,11 +39,16 @@ export class LoginComponent implements OnInit {
       {
         this.loginService.login(this.myLoginFrom.value)
         .subscribe(
-          (response) =>{ 
+          (response) =>{
+            debugger 
             if(response && response.token && response.data[0] && response.data[0].username && response.data[0].password){ 
               const userToken = response.token;  
+              debugger
               this.authService.sendToken(response['token']);
               this.route.navigate(['users']); 
+           }else if(!response.token){
+              console.log('wrong username or password')
+              this.loggMessage = 'wrong username or password';
            }
             
           },
