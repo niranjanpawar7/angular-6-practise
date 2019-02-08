@@ -9,7 +9,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!auth.isLoggednIn()"><a routerLink="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li *ngIf="!auth.isLoggednIn()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li *ngIf="auth.isLoggednIn()" style="cursor:pointer" (click)="logout()"><a><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
+        <li *ngIf="auth.isLoggednIn()" style="cursor:pointer" (click)="logout()"><a><span class="glyphicon glyphicon-log-in"></span> logout</a></li> 
+        <li *ngIf="auth.isLoggednIn()" style="cursor:pointer" (click)="logout()"><a><span class="glyphicon glyphicon-log-in"></span> {{ userName.UserName }}</a></li> 
+        
       </ul>
     </div>
   </nav>
