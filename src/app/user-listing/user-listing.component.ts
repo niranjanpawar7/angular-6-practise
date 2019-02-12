@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material';
 export class UserListingComponent implements OnInit {
   date = new Date();
   subscription: ISubscription;
-  dataSource
+  dataSource;
 
   // column Name display in table
   columnsToDisplay = ['id', 'username', 'email', 'contact',   'password', 'confpassword'];
