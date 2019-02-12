@@ -5,6 +5,7 @@
       </div>
       <ul class="nav navbar-nav"> 
           <li class=""><a *ngIf="auth.isLoggednIn()" routerLink="/users">users</a></li>   
+          <li class=""><a *ngIf="auth.isLoggednIn()" routerLink="/userlist">userlist</a></li>    
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!auth.isLoggednIn()"><a routerLink="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

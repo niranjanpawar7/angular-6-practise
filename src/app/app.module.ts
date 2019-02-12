@@ -33,6 +33,7 @@ import { AuthService } from './auth.service';
 import { MyDialogComponent } from './my-dialog/my-dialog.component';
 import { MatDialogModule } from "@angular/material";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserListingComponent } from './user-listing/user-listing.component';
 
 
 
@@ -50,6 +51,7 @@ const appRoute: Routes  = [
     UserDetailsComponent,
     MyDialogComponent,
     PageNotFoundComponent,
+    UserListingComponent,
   ],
   imports: [
     BrowserModule,
