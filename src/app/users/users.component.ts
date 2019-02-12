@@ -74,8 +74,7 @@ export class UsersComponent implements OnInit {
 
   // Search Filter
   applyFilter(filterValue: string) {
-    console.log(this.dataSource);
-    debugger
+    console.log(this.dataSource); 
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

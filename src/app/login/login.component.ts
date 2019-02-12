@@ -41,8 +41,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (response) => {
             if (response && response.token && response.data[0] && response.data[0].username && response.data[0].password) {
-              const userToken = response.token;
-              debugger
+              const userToken = response.token; 
               this.userName = response.data[0].username
               //State Data Service Of User 
               this.dataService.sendDetails(this.userName);
