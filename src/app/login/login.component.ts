@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loggMessage;
   userName;
+  loading;
 
   constructor(private fb: FormBuilder, private dataService: DataService, private loginService: LoginService, private route: Router, private authService: AuthService) { }
 
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (response) => {
             if (response && response.token && response.data[0] && response.data[0].username && response.data[0].password) {
-              const userToken = response.token; 
+              const userToken = response.token;
               this.userName = response.data[0].username
               //State Data Service Of User 
               this.dataService.sendDetails(this.userName);

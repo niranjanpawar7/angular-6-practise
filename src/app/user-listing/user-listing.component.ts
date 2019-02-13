@@ -46,6 +46,7 @@ export class UserListingComponent implements OnInit {
   };
 
   openModal(userData:any) {  
+    console.log('Open', userData);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -55,9 +56,9 @@ export class UserListingComponent implements OnInit {
       data : userData
     };
     const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => { 
       console.log(' Dialog was closed');
-      console.log(result);
+      console.log('Closed', userData);
     });
   }
 
