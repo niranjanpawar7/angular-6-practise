@@ -18,13 +18,13 @@ export class RegistrationComponent implements OnInit {
   constructor(public dialog: MatDialog, private fb: FormBuilder, private registrationService : RegistrationService, private route: Router) { }
 
   ngOnInit() {
-    this.myForm = this.fb.group({
-      username : ['', Validators.required],
-      contact : ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
-      confpassword: ['', [Validators.required, Validators.minLength(3)]]
-    });
+      this.myForm = this.fb.group({
+        username : ['', Validators.required],
+        contact : ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(3)]],
+        confpassword: ['', [Validators.required, Validators.minLength(3)]]
+      });
   }
 
   get f() { return this.myForm.controls; }
@@ -56,20 +56,5 @@ export class RegistrationComponent implements OnInit {
             this.submitted = false;
           }
         }
-  }
-
-  openModal() {
-          const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
-          dialogConfig.autoFocus = true;
-          dialogConfig.data = {
-            id: 1,
-            title: 'Angular For Beginners'
-          };
-           const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
-            dialogRef.afterClosed().subscribe(result => {
-          console.log(' Dialog was closed');
-          console.log(result);
-        });
-    }
+  } 
 }

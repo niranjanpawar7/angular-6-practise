@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { listingService } from '../shared/services/userlist.service';``
+import { listingService } from '../shared/services/userlist.service'; ``
 import { ISubscription } from "rxjs/Subscription";
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material';
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 
 
 @Component({
@@ -17,19 +19,17 @@ export class UserListingComponent implements OnInit {
   dataSource;
 
   // column Name display in table
-  columnsToDisplay = ['id', 'username', 'email', 'contact',   'password', 'confpassword'];
-  
+  columnsToDisplay = ['id', 'username', 'email', 'contact', 'password', 'confpassword', 'edit'];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private ListingService: listingService) { }
+  constructor(public dialog: MatDialog, private ListingService: listingService) { }
 
-  ngOnInit() {
-    debugger
-     this.ListingService.getUserData().subscribe(
-       (response) =>{ 
-        console.log('response', response)
+  ngOnInit() { 
+    this.ListingService.getUserData().subscribe(
+      (response) => { 
         this.dataSource = response;
         // pass data to table
         this.dataSource = new MatTableDataSource(this.dataSource);
@@ -38,11 +38,27 @@ export class UserListingComponent implements OnInit {
         // Paginartion Of data
         this.dataSource.paginator = this.paginator;
         this.paginator._pageIndex = 0;
-       },
-       (error) =>{
-          console.log('error', error)
-       }
-     )
+      },
+      (error) => {
+        console.log('error', error)
+      }
+    )
+  };
+
+  openModal(userData:any) {  
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      id: 1,
+      title: 'Angular For Beginners',
+      data : userData
+    };
+    const dialogRef = this.dialog.open(MyDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(' Dialog was closed');
+      console.log(result);
+    });
   }
 
 }

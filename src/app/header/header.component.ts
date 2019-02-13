@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   ngDoCheck() {
-    console.log('ngAfterContentInit');
+    //console.log('ngAfterContentInit');
     this.dataService.getDetails().subscribe(
       (response) => {
         if (response) {
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('error', error);
+        //console.log('error', error);
       },
     )
   };

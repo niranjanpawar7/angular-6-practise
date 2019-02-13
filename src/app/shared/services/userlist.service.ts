@@ -10,8 +10,7 @@ export class listingService {
 
   constructor(private http: HttpClient) { }
 
-    getUserData() : Observable<any>  {
-        debugger
+    getUserData() : Observable<any>  { 
         return this.http.post('http://localhost:5000/users/getUserData', 'data');
     };
 }
