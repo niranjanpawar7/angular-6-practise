@@ -32,9 +32,9 @@ export class HeaderComponent implements OnInit {
   };
 
 
-  logout() { 
+  logout() {
     this.auth.logout();
-    this.route.navigate(['login']); 
+    this.route.navigate(['login']);
   };
 
 }
