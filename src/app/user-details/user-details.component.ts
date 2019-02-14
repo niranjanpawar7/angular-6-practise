@@ -25,8 +25,8 @@ export class UserDetailsComponent implements OnInit {
     this.subscription = this.QuoteServiceClass.getQuotes()
       .subscribe(
         (response) => {
-          response.filter(item => {
-            if (item.author.id == authorId) {
+          response.filter(item => { 
+            if (item.author['id'] == authorId) {
               this.quoteData = item;
             }
           })
