@@ -5,6 +5,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { MyDialogComponent } from '../my-dialog/my-dialog.component';
+import { UserModel } from '../model/UsersModel';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { MyDialogComponent } from '../my-dialog/my-dialog.component';
 })
 
 export class UserListingComponent implements OnInit {
+  UserModel: UserModel[] = [];
   date = new Date();
   subscription: ISubscription;
   dataSource;
@@ -25,17 +27,19 @@ export class UserListingComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(public dialog: MatDialog, private ListingService: listingService) { }
+  constructor(public dialog: MatDialog, private ListingService: listingService) {}
 
-  ngOnInit() { 
+  ngOnInit() {  
+    this.UserListing() 
+  };
+
+  UserListing(){
     this.ListingService.getUserData().subscribe(
-      (response) => { 
+      (response: Array<UserModel>) => {  
         this.dataSource = response;
         // pass data to table
-        this.dataSource = new MatTableDataSource(this.dataSource);
-        // Sorting data of table
-        this.dataSource.sort = this.sort;
-        // Paginartion Of data
+        this.dataSource = new MatTableDataSource<UserModel>(this.dataSource); 
+        this.dataSource.sort = this.sort; 
         this.dataSource.paginator = this.paginator;
         this.paginator._pageIndex = 0;
       },
@@ -44,7 +48,6 @@ export class UserListingComponent implements OnInit {
       }
     )
   };
-
   openModal(userData:any) {  
     console.log('Open', userData);
     const dialogConfig = new MatDialogConfig();

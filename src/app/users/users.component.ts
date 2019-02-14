@@ -3,6 +3,8 @@ import { QuoteServiceClass } from '../shared/services/quotes.service';
 import { ISubscription } from "rxjs/Subscription";
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material';
+import { QuotesModel } from '../model/QuotesModel';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -12,6 +14,7 @@ import { MatSort } from '@angular/material';
 })
 export class UsersComponent implements OnInit {
 
+  QuotesModel : QuotesModel[];
   date = new Date();
   subscription: ISubscription;
   dataSource
@@ -29,37 +32,15 @@ export class UsersComponent implements OnInit {
     this.getUserData();
   };
 
-
-  // Life cycle  in angular 
-  // No hook works inside another hook
-
-  /*
-    ngOnChanges(){
-      console.log('Ng-on-change');
-    };
-    ngAfterContentInit(){
-      console.log('ngAfterContentInit');
-    };
-    ngAfterContentChecked(){
-      console.log('ngAfterContentChecked');
-    };
-    ngAfterViewInit(){
-      console.log('ngAfterViewInit');
-    };
-    ngAfterViewChecked(){
-      console.log('ngAfterViewChecked');
-    }
-  */
-
   // Fetch All user from mock json
   getUserData() {
 
     this.subscription = this.quoteService.getQuotes()
       .subscribe(
-        (response) => {
+        (response: QuotesModel[]) => {
           this.dataSource = response;
           // pass data to table
-          this.dataSource = new MatTableDataSource(this.dataSource);
+          this.dataSource = new MatTableDataSource<QuotesModel>(this.dataSource);
           // Sorting data of table
           this.dataSource.sort = this.sort;
           // Paginartion Of data
