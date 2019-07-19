@@ -1,4 +1,4 @@
-# Docplexus App
+# Practise-App
 
 This App is implemented in [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
